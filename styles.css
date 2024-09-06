@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+:root {
+  /* Primary */
+  --strong-cyan: hsl(172, 67%, 45%);
+
+  /* Neutral */
+  --very-dark-cyan: hsl(183, 100%, 15%);
+  --dark-greyish-cyan: hsl(186, 14%, 43%);
+  --greyish-cyan: hsl(184, 14%, 56%);
+  --light-greyish-cyan: hsl(185, 41%, 84%);
+  --very-light-greyish-cyan: hsl(189, 41%, 97%);
+  --white: hsl(0, 0%, 100%);
+}
+
+body {
+  background-color: var(--light-greyish-cyan);
+  font-family: "Space Mono", system-ui;
+  color: var(--dark-greyish-cyan);
+
+  /* centering content vertically and horizontally*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.tip-calc-container,
+.tip-total-container {
+  background-color: var(--white);
+  width: 100%;
+}
+
+.tip-calc-container {
+  border-radius: 25px 25px 0 0;
+}
