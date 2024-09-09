@@ -22,21 +22,23 @@
     <img src="images/logo.svg" alt="Splitter company logo" />
     <section class="tip-calc-container">
       <h2>Bill</h2>
-      <input type="number" />
+      <input id="bill-input" type="number" />
       <h2>Select Tip %</h2>
-      <button>5%</button>
-      <button>10%</button>
-      <button>15%</button>
-      <button>25%</button>
-      <button>50%</button>
-      <button>Custom</button>
+      <button class="tip-btn" data-percent="0.10">10%</button>
+      <button class="tip-btn" data-percent="0.15">15%</button>
+      <button class="tip-btn" data-percent="0.18">18%</button>
+      <button class="tip-btn" data-percent="0.20">20%</button>
+      <button class="tip-btn" data-percent="0.25">25%</button>
+      <button class="tip-btn">Custom</button>
+      <div class="custom-tip" id="custom-tip"></div>
 
-      <h2>Number of People</h2>
-      <input type="text" />
+      <h2>Number of People (if more than one)</h2>
+      <input id="number-of-people" type="number" />
     </section>
     <section class="tip-total-container">
-      <h3>Tip Amount</h3>
-      <h3>Total</h3>
+      <h3>Tip Amount per person <span id="tip-per-person">$0.00</span></h3>
+      <h3>Total Tip <span id="tip-total">$0.00</span></h3>
+      <h3>Total Bill <span id="total-bill">$0.00</span></h3>
       <button>Reset</button>
     </section>
   </body>
