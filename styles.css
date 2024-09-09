@@ -1,3 +1,4 @@
+/* GENERAL */
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 :root {
@@ -27,16 +28,142 @@ body {
   margin: 0;
 }
 
+p {
+  font-weight: 700;
+}
+
+/* Logo */
+.logo {
+  margin-bottom: 2em;
+}
+
+/* Tip calc container */
 .tip-calc-container,
 .tip-total-container {
   background-color: var(--white);
   width: 100%;
+  min-width: 400px;
+  padding: 1em;
 }
 
 .tip-calc-container {
   border-radius: 25px 25px 0 0;
 }
 
-.custom-tip {
-  display: none;
+.tip-calc-container p {
+  margin-bottom: 0.5em;
+}
+
+.tip-percent-container {
+  display: grid;
+  gap: 0.5em;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.tip-btn {
+  background-color: var(--very-dark-cyan);
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 0.3em 0;
+  border-radius: 5px;
+  cursor: pointer;
+  border: transparent;
+  transition: all 0.3s ease;
+}
+
+.tip-btn:hover {
+  background-color: var(--strong-cyan);
+  border: var(--strong-cyan);
+}
+
+input {
+  background: var(--very-light-greyish-cyan);
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  padding: 0.5em 0;
+  color: var(--greyish-cyan);
+  margin-bottom: 1em;
+}
+
+/* Tip total container */
+.tip-total-container {
+  border-radius: 0 0 25px 25px;
+}
+
+.tip-background {
+  background-color: var(--very-dark-cyan);
+  border-radius: 15px;
+  padding: 2em;
+}
+
+.tip-calc-div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.tip-title {
+  color: var(--white);
+}
+.per-person {
+  display: block;
+  color: var(--greyish-cyan);
+}
+
+.calc {
+  color: var(--strong-cyan);
+  font-size: 1.8rem;
+}
+
+.reset-btn {
+  width: 100%;
+  text-transform: uppercase;
+  background: var(--strong-cyan);
+  font-weight: 700;
+  color: var(--very-dark-cyan);
+  border-radius: 5px;
+  padding: 0.5em 0;
+  border: none;
+  margin-top: 0.5em;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+  background: var(--very-dark-cyan);
+  color: var(--white);
+  border: 2px solid var(--strong-cyan);
+}
+
+/* UI error displays */
+.bill-error-msg,
+.people-error-msg {
+  color: #e17457;
+  font-size: 0.9rem;
+}
+
+@media (width >= 768px) {
+  .flex {
+    display: flex;
+  }
+
+  .tip-calc-container,
+  .tip-total-container {
+    min-width: 500px;
+  }
+
+  .tip-calc-container {
+    border-radius: 25px 0 0 25px;
+  }
+
+  .tip-total-container {
+    border-radius: 0 25px 25px 0;
+  }
+
+  .tip-percent-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
