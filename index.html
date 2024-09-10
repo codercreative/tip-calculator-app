@@ -22,13 +22,29 @@
     <img src="images/logo.svg" alt="Splitter company logo" class="logo" />
     <div class="flex">
       <section class="tip-calc-container">
-        <p>Bill <span class="bill-error-msg" id="bill-error-msg"></span></p>
-        <input id="bill-input" type="number" />
-        <p>
+        <label for="bill" class="bill-label"
+          >Bill <span class="bill-error-msg" id="bill-error-msg"></span
+        ></label>
+        <input
+          id="bill-input"
+          class="bill-input"
+          name="bill"
+          type="number"
+          placeholder="0"
+        />
+
+        <label for="people" class="people-label">
           Number of People
           <span id="people-error-msg" class="people-error-msg"></span>
-        </p>
-        <input id="number-of-people" type="number" />
+        </label>
+        <input
+          id="number-of-people"
+          class="people-input"
+          name="people"
+          type="number"
+          placeholder="0"
+        />
+
         <p>Select Tip %</p>
         <div class="tip-percent-container">
           <button class="tip-btn" data-percent="0.10">10%</button>
@@ -36,8 +52,13 @@
           <button class="tip-btn" data-percent="0.18">18%</button>
           <button class="tip-btn" data-percent="0.20">20%</button>
           <button class="tip-btn" data-percent="0.25">25%</button>
-          <button class="tip-btn">Custom</button>
-          <div class="custom-tip" id="custom-tip"></div>
+          <label for="custom" class="visually-hidden"></label>
+          <input
+            id="custom-tip-btn"
+            class="custom-tip-btn"
+            name="custom"
+            placeholder="Custom"
+          />
         </div>
       </section>
       <section class="tip-total-container">

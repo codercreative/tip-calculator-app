@@ -9,6 +9,7 @@
   --very-dark-cyan: hsl(183, 100%, 15%);
   --dark-greyish-cyan: hsl(186, 14%, 43%);
   --greyish-cyan: hsl(184, 14%, 56%);
+  --light-cyan: hsl(173, 61%, 77%);
   --light-greyish-cyan: hsl(185, 41%, 84%);
   --very-light-greyish-cyan: hsl(189, 41%, 97%);
   --white: hsl(0, 0%, 100%);
@@ -28,6 +29,7 @@ body {
   margin: 0;
 }
 
+label,
 p {
   font-weight: 700;
 }
@@ -42,7 +44,7 @@ p {
 .tip-total-container {
   background-color: var(--white);
   width: 100%;
-  min-width: 400px;
+  min-width: 375px;
   padding: 1em;
 }
 
@@ -60,7 +62,8 @@ p {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.tip-btn {
+.tip-btn,
+.custom-tip-btn {
   background-color: var(--very-dark-cyan);
   color: var(--white);
   font-size: 1.2rem;
@@ -68,16 +71,30 @@ p {
   padding: 0.3em 0;
   border-radius: 5px;
   cursor: pointer;
-  border: transparent;
+  border: 2px solid transparent;
   transition: all 0.3s ease;
+  /* Make tip buttons and custom-tip-btn the same width across all devices */
+  width: 100%;
+}
+
+.custom-tip-btn {
+  background-color: var(--very-light-greyish-cyan);
+  text-align: center;
 }
 
 .tip-btn:hover {
   background-color: var(--strong-cyan);
-  border: var(--strong-cyan);
+  border: 2px solid var(--strong-cyan);
+  color: var(--very-dark-cyan);
 }
 
-input {
+.custom-tip-btn:hover {
+  border: 2px solid var(--strong-cyan);
+}
+
+/* Input fields */
+.bill-input,
+.people-input {
   background: var(--very-light-greyish-cyan);
   border: none;
   border-radius: 5px;
@@ -85,6 +102,32 @@ input {
   padding: 0.5em 0;
   color: var(--greyish-cyan);
   margin-bottom: 1em;
+
+  padding-right: 10px;
+  background-repeat: no-repeat;
+  /* center on the same line */
+  background-position: 10px center;
+  /* Number 0 right-aligned */
+  text-align: right;
+}
+
+.bill-input {
+  background-image: url("images/icon-dollar.svg");
+}
+
+.people-input {
+  background-image: url("images/icon-person.svg");
+}
+
+.visually-hidden {
+  border-width: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important;
 }
 
 /* Tip total container */
@@ -133,19 +176,26 @@ input {
 }
 
 .reset-btn:hover {
-  background: var(--very-dark-cyan);
-  color: var(--white);
-  border: 2px solid var(--strong-cyan);
+  background: var(--light-cyan);
+  border: 2px solid var(--light-cyan);
 }
 
 /* UI error displays */
+
+/* Right-align the error messages to the label titles */
+.bill-label,
+.people-label {
+  display: flex;
+  justify-content: space-between;
+}
+
 .bill-error-msg,
 .people-error-msg {
   color: #e17457;
   font-size: 0.9rem;
 }
 
-@media (width >= 768px) {
+@media (width >= 1024px) {
   .flex {
     display: flex;
   }

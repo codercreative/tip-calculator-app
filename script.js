@@ -1,5 +1,4 @@
 const billInput = document.getElementById("bill-input");
-const customTip = document.getElementById("custom-tip");
 const tipBtns = document.querySelectorAll(".tip-btn");
 const tipPerPerson = document.getElementById("tip-per-person");
 const tipTotal = document.getElementById("tip-total");
@@ -8,9 +7,7 @@ const numberOfPeople = document.getElementById("number-of-people");
 const billErrorMsg = document.getElementById("bill-error-msg");
 const peopleErrorMsg = document.getElementById("people-error-msg");
 const resetBtn = document.getElementById("reset-btn");
-
-billInput.value = 0;
-numberOfPeople.value = 0;
+const customTip = document.getElementById("custom-tip-btn");
 
 //Event Listener:  User clicks a tip button after entering a bill amount
 tipBtns.forEach((button) => {
@@ -47,15 +44,39 @@ function handleTip(e) {
   totalBill.textContent = `$${total}`;
 }
 
-// Or user creates a custom tip with pop-up entry
+// Handle styling of user input for bill amount and number of people
+billInput.addEventListener("focus", styleInput);
+numberOfPeople.addEventListener("focus", styleInput);
 
+function styleInput() {
+  this.style.fontSize = "1.5rem";
+  this.style.color = "var(--very-dark-cyan)";
+  this.style.fontWeight = "700";
+  this.style.border = "var(--strong-cyan)";
+}
+
+//Reset button event listener and function
 resetBtn.addEventListener("click", resetTipCalc);
 
-//Reset button
 function resetTipCalc() {
-  billInput.value = "0";
-  numberOfPeople.value = "0";
+  billInput.value = "";
+  billInput.fontSize = "1rem";
+  numberOfPeople.value = "";
+  numberOfPeople.fontSize = "1rem";
   tipPerPerson.textContent = "$0.00";
   tipTotal.textContent = "$0.00";
   totalBill.textContent = "$0.00";
+}
+
+// Handle customer tip input
+customTip.addEventListener("input", handleCustomTip);
+
+function handleCustomTip() {
+  customTip.style.fontSize = " 1.2rem";
+  customTip.style.color = "var(--very-dark-cyan)";
+
+  let customTipValue = Number(customTip.value);
+
+  if (customTipValue > 0 || customTipValue < 100) {
+  }
 }
