@@ -19,11 +19,18 @@
     <title>Frontend Mentor | Tip calculator app</title>
   </head>
   <body>
-    <img src="images/logo.svg" alt="Splitter company logo" class="logo" />
-    <div class="flex">
+    <header>
+      <img src="images/logo.svg" alt="Splitter company logo" class="logo" />
+    </header>
+    <main class="flex">
       <section class="tip-calc-container">
-        <label for="bill" class="bill-label"
-          >Bill <span class="bill-error-msg" id="bill-error-msg"></span
+        <label for="bill-input" class="bill-label"
+          >Bill
+          <span
+            class="bill-error-msg"
+            id="bill-error-msg"
+            aria-hidden="true"
+          ></span
         ></label>
         <input
           id="bill-input"
@@ -33,9 +40,13 @@
           placeholder="0"
         />
 
-        <label for="people" class="people-label">
+        <label for="number-of-people" class="people-label">
           Number of People
-          <span id="people-error-msg" class="people-error-msg"></span>
+          <span
+            id="people-error-msg"
+            class="people-error-msg"
+            aria-hidden="true"
+          ></span>
         </label>
         <input
           id="number-of-people"
@@ -45,42 +56,42 @@
           placeholder="0"
         />
 
-        <p>Select Tip %</p>
+        <h2>Select Tip %</h2>
         <div class="tip-percent-container">
           <button class="tip-btn" data-percent="0.10">10%</button>
           <button class="tip-btn" data-percent="0.15">15%</button>
           <button class="tip-btn" data-percent="0.18">18%</button>
           <button class="tip-btn" data-percent="0.20">20%</button>
           <button class="tip-btn" data-percent="0.25">25%</button>
-          <label for="custom" class="visually-hidden"></label>
           <input
             id="custom-tip-btn"
             class="custom-tip-btn"
             name="custom"
-            placeholder="Custom"
+            placeholder="Custom %"
+            aria-label="User enters custom tip percentage here"
           />
         </div>
       </section>
       <section class="tip-total-container">
         <div class="tip-background">
           <div class="tip-calc-div">
-            <p class="tip-title">
+            <h2 class="tip-title">
               Tip Amount <span class="per-person">/person</span>
-            </p>
+            </h2>
             <p id="tip-per-person" class="calc">$0.00</p>
           </div>
 
           <div class="tip-calc-div">
-            <p class="tip-title">Total Tip</p>
+            <h2 class="tip-title">Total Tip</h2>
             <p id="tip-total" class="calc">$0.00</p>
           </div>
           <div class="tip-calc-div">
-            <p class="tip-title">Total Bill</p>
+            <h2 class="tip-title">Total Bill</h2>
             <p id="total-bill" class="calc">$0.00</p>
           </div>
           <button id="reset-btn" class="reset-btn">Reset</button>
         </div>
       </section>
-    </div>
+    </main>
   </body>
 </html>

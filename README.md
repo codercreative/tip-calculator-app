@@ -10,7 +10,6 @@ This is a solution to the [Tip calculator app challenge on Frontend Mentor](http
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [To Do](#to-do)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
 - [Author](#author)
@@ -27,12 +26,12 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![Design preview for the Tip Calculator](./images/screenshot.png)
 
 ### Links
 
 - [Solution URL](https://github.com/codercreative/tip-calculator-app)
-- [Live Site URL](https://your-live-site-url.com)
+- [Live Site URL](https://tip-calculator-chris.netlify.app/)
 
 ## My process
 
@@ -44,25 +43,27 @@ Users should be able to:
 - CSS Grid
 - Mobile-first workflow
 
-### To Do
-
-Remove the 0 from the input fields when the user enters the dollar amount and number of people
-
-When clicking away from the input make sure that the fields go back to original state
-
-Add green / red border around the input fields based on user interaction
-
-Make the custom tip input work ("custom" disappears; user can enter numbers (from 1 - 100); calculate tips)
-
-Resolve the NaN error for the tip amount per person when user does not enter data in the input fields
-
-Make input fields a certain width in large screen sizes
-
 ### What I learned
 
-**Overall comment about UI/UX:** I decided to modify the UI to improve the user experience (UX). It felt more intuitive to have the user first enter the bill amount, then the number of people, and finally select the tip percentage. This adjustment creates a more logical flow, as the tip selection naturally follows after the essential inputs (bill and number of people), rather than being placed between them.
+**Overall comment about UI/UX:**
 
-Inserting the dollar and person icons:
+- **Input Order**
+
+  - The input fields have been reordered for a more intuitive user flow:
+    1. Enter the bill amount
+    2. Enter the number of people
+    3. Select the tip percentages
+
+- **Tip Percentages**
+
+  - The fixed tip amounts have been updated to more realistic values (The original design included a tip amount of 50%)
+
+- **Result Labels**
+  - I also changed the results to Tip Amount/person, Total Tip, and Total Bill (instead of Tip Amount/person, and Total/person) as that made more sense to me.
+
+**Other Notes:**
+
+How I resolved inserting the dollar and person icons:
 
 ```css
 .bill-input,
@@ -89,28 +90,24 @@ Inserting the dollar and person icons:
   background-image: url("images/icon-person.svg");
 ```
 
+Auto-hiding placeholder text upon focus in input fields:
+
+```css
+.bill-input:focus::placeholder,
+.people-input:focus::placeholder,
+.custom-tip-btn:focus::placeholder {
+  color: transparent;
+}
+```
+
 Right-align the error messages to the label titles:
 
-```js
+```css
 /* Right-align the error messages to the label titles */
 .bill-label,
 .people-label {
   display: flex;
   justify-content: space-between;
-}
-```
-
-Use of `this` key word allows me to apply the same styling logic to both the billInput and numberOfPeople inputs.
-
-```js
-// Handle styling of user input for bill amount and number of people
-billInput.addEventListener("focus", styleInput);
-numberOfPeople.addEventListener("focus", styleInput);
-
-function styleInput() {
-  this.style.fontSize = "1.5rem";
-  this.style.color = "var(--very-dark-cyan)";
-  this.style.fontWeight = "700";
 }
 ```
 
@@ -143,9 +140,31 @@ Remember to include Number() in front of tip in the second line because `tip.toF
 };
 ```
 
+Making sure that there is enough contrast for text with `filter: contrast(120%)`:
+
+```css
+.reset-btn {
+  width: 100%;
+  text-transform: uppercase;
+  background: var(--strong-cyan);
+  font-weight: 700;
+  color: var(--very-dark-cyan);
+  /*Ensure enough contrast */
+  filter: contrast(120%);
+  border-radius: 5px;
+  padding: 0.5em 0;
+  border: none;
+  margin-top: 0.5em;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+```
+
 ### Continued development
 
-At some point, I could refactor this project into a React application for a more efficient rendering process, etc.
+- Refactor the code to make it more DRY.
+- Create an error message if the custom tip is too high.
 
 ## Author
 

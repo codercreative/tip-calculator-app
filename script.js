@@ -9,7 +9,33 @@ const peopleErrorMsg = document.getElementById("people-error-msg");
 const resetBtn = document.getElementById("reset-btn");
 const customTip = document.getElementById("custom-tip-btn");
 
-//Event Listener:  User clicks a tip button after entering a bill amount
+//Event listeners for focus state
+billInput.addEventListener("focus", handleFocus);
+numberOfPeople.addEventListener("focus", handleFocus);
+
+// Event listeners for blur state
+billInput.addEventListener("blur", handleBlur);
+numberOfPeople.addEventListener("blur", handleBlur);
+
+//Focus state -- handle styling when user inputs bill amount and number of people
+function handleFocus() {
+  this.style.fontSize = "1.5rem";
+  this.style.color = "var(--very-dark-cyan)";
+  this.style.fontWeight = "700";
+  this.style.padding = "0";
+  // this.outline = "none";
+  billErrorMsg.textContent = "";
+  peopleErrorMsg.textContent = "";
+}
+
+//Blur state -- handle styling when user clicks outside the input fields
+function handleBlur() {
+  this.style.fontSize = "1.5rem";
+  this.style.color = "var(--very-dark-cyan)";
+  this.style.fontWeight = "700";
+}
+
+// User clicks a tip button after entering a bill amount
 tipBtns.forEach((button) => {
   button.addEventListener("click", handleTip);
 });
@@ -20,39 +46,38 @@ function handleTip(e) {
   const people = Number(numberOfPeople.value);
   const billAmount = Number(billInput.value);
 
-  //Validation
+  //Error handling for missing input values
   if (!billAmount) {
     billErrorMsg.textContent = "Please enter the total bill amount";
+    billInput.style.border = "2px solid var(--error-red)";
   } else {
     billErrorMsg.textContent = "";
+    billInput.style.border = "none";
   }
 
   if (!people) {
     peopleErrorMsg.textContent = "Can't be zero";
+    numberOfPeople.style.border = "2px solid var(--error-red)";
   } else {
     peopleErrorMsg.textContent = "";
+    numberOfPeople.style.border = "none";
   }
 
-  //Calculate tip and total
   const tip = (billAmount * tipPercentage).toFixed(2);
   const total = (billAmount + Number(tip)).toFixed(2);
   const tipPerPersonAmount = (tip / people).toFixed(2);
 
-  //Updating UI
-  tipPerPerson.textContent = `$${tipPerPersonAmount}`;
-  tipTotal.textContent = `$${tip}`;
-  totalBill.textContent = `$${total}`;
-}
-
-// Handle styling of user input for bill amount and number of people
-billInput.addEventListener("focus", styleInput);
-numberOfPeople.addEventListener("focus", styleInput);
-
-function styleInput() {
-  this.style.fontSize = "1.5rem";
-  this.style.color = "var(--very-dark-cyan)";
-  this.style.fontWeight = "700";
-  this.style.border = "var(--strong-cyan)";
+  if (billAmount > 0 && people > 0) {
+    //Updating UI
+    tipPerPerson.textContent = `$${tipPerPersonAmount}`;
+    tipTotal.textContent = `$${tip}`;
+    totalBill.textContent = `$${total}`;
+  } else {
+    //Default state
+    tipPerPerson.textContent = `$0.00`;
+    tipTotal.textContent = `$0.00`;
+    totalBill.textContent = `$0.00`;
+  }
 }
 
 //Reset button event listener and function
@@ -68,15 +93,27 @@ function resetTipCalc() {
   totalBill.textContent = "$0.00";
 }
 
-// Handle customer tip input
+// Handle custom tip input
 customTip.addEventListener("input", handleCustomTip);
 
-function handleCustomTip() {
-  customTip.style.fontSize = " 1.2rem";
-  customTip.style.color = "var(--very-dark-cyan)";
+function handleCustomTip(e) {
+  const people = Number(numberOfPeople.value);
+  const billAmount = Number(billInput.value);
+  const userEnteredTipPercentage = Number(customTip.value) / 100;
 
-  let customTipValue = Number(customTip.value);
+  const tip = (billAmount * userEnteredTipPercentage).toFixed(2);
+  const total = (billAmount + Number(tip)).toFixed(2);
+  const tipPerPersonAmount = (tip / people).toFixed(2);
 
-  if (customTipValue > 0 || customTipValue < 100) {
+  if (billAmount > 0 && people > 0) {
+    //Updating UI
+    tipPerPerson.textContent = `$${tipPerPersonAmount}`;
+    tipTotal.textContent = `$${tip}`;
+    totalBill.textContent = `$${total}`;
+  } else {
+    //Default state
+    tipPerPerson.textContent = `$0.00`;
+    tipTotal.textContent = `$0.00`;
+    totalBill.textContent = `$0.00`;
   }
 }

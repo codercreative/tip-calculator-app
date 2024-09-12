@@ -13,6 +13,7 @@
   --light-greyish-cyan: hsl(185, 41%, 84%);
   --very-light-greyish-cyan: hsl(189, 41%, 97%);
   --white: hsl(0, 0%, 100%);
+  --error-red: hsl(13, 70%, 61%);
 }
 
 body {
@@ -29,8 +30,12 @@ body {
   margin: 0;
 }
 
-label,
-p {
+h2 {
+  font-size: 1rem;
+}
+
+p,
+label {
   font-weight: 700;
 }
 
@@ -77,14 +82,15 @@ p {
   width: 100%;
 }
 
+.tip-btn:hover {
+  background-color: var(--light-cyan);
+  border: 2px solid var(--light-cyan);
+  color: var(--very-dark-cyan);
+}
+
 .custom-tip-btn {
   background-color: var(--very-light-greyish-cyan);
   text-align: center;
-}
-
-.tip-btn:hover {
-  background-color: var(--strong-cyan);
-  border: 2px solid var(--strong-cyan);
   color: var(--very-dark-cyan);
 }
 
@@ -97,6 +103,8 @@ p {
 .people-input {
   background: var(--very-light-greyish-cyan);
   border: none;
+  /* removing default border */
+  outline: none;
   border-radius: 5px;
   width: 100%;
   padding: 0.5em 0;
@@ -119,15 +127,20 @@ p {
   background-image: url("images/icon-person.svg");
 }
 
-.visually-hidden {
-  border-width: 0 !important;
-  clip: rect(1px, 1px, 1px, 1px) !important;
-  height: 1px !important;
-  overflow: hidden !important;
-  padding: 0 !important;
-  position: absolute !important;
-  white-space: nowrap !important;
-  width: 1px !important;
+.custom-tip-btn {
+  outline: none;
+}
+
+.bill-input:focus,
+.people-input:focus,
+.custom-tip-btn:focus {
+  border: 2px solid var(--strong-cyan);
+}
+
+.bill-input:focus::placeholder,
+.people-input:focus::placeholder,
+.custom-tip-btn:focus::placeholder {
+  color: transparent;
 }
 
 /* Tip total container */
@@ -152,7 +165,8 @@ p {
 }
 .per-person {
   display: block;
-  color: var(--greyish-cyan);
+  color: var(--very-light-greyish-cyan);
+  font-size: 0.8rem;
 }
 
 .calc {
@@ -166,6 +180,7 @@ p {
   background: var(--strong-cyan);
   font-weight: 700;
   color: var(--very-dark-cyan);
+  filter: contrast(120%);
   border-radius: 5px;
   padding: 0.5em 0;
   border: none;
@@ -191,18 +206,20 @@ p {
 
 .bill-error-msg,
 .people-error-msg {
-  color: #e17457;
+  color: var(--error-red);
   font-size: 0.9rem;
 }
 
 @media (width >= 1024px) {
   .flex {
     display: flex;
+    justify-content: center;
   }
 
   .tip-calc-container,
   .tip-total-container {
     min-width: 500px;
+    max-width: 30%;
   }
 
   .tip-calc-container {
