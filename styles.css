@@ -35,8 +35,13 @@ h2 {
 }
 
 p,
-label {
+label,
+legend {
   font-weight: 700;
+}
+
+fieldset {
+  border: none;
 }
 
 /* Logo */

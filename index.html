@@ -24,53 +24,86 @@
     </header>
     <main class="flex">
       <section class="tip-calc-container">
-        <label for="bill-input" class="bill-label"
-          >Bill
-          <span
-            class="bill-error-msg"
-            id="bill-error-msg"
-            aria-hidden="true"
-          ></span
-        ></label>
-        <input
-          id="bill-input"
-          class="bill-input"
-          name="bill"
-          type="number"
-          placeholder="0"
-        />
-
-        <label for="number-of-people" class="people-label">
-          Number of People
-          <span
-            id="people-error-msg"
-            class="people-error-msg"
-            aria-hidden="true"
-          ></span>
-        </label>
-        <input
-          id="number-of-people"
-          class="people-input"
-          name="people"
-          type="number"
-          placeholder="0"
-        />
-
-        <h2>Select Tip %</h2>
-        <div class="tip-percent-container">
-          <button class="tip-btn" data-percent="0.10">10%</button>
-          <button class="tip-btn" data-percent="0.15">15%</button>
-          <button class="tip-btn" data-percent="0.18">18%</button>
-          <button class="tip-btn" data-percent="0.20">20%</button>
-          <button class="tip-btn" data-percent="0.25">25%</button>
+        <fieldset aria-labelledby="bill-label people-label">
+          <label for="bill-input" id="bill-label" class="bill-label"
+            >Bill
+            <span
+              class="bill-error-msg"
+              id="bill-error-msg"
+              aria-live="assertive"
+            ></span
+          ></label>
           <input
-            id="custom-tip-btn"
-            class="custom-tip-btn"
-            name="custom"
-            placeholder="Custom %"
-            aria-label="User enters custom tip percentage here"
+            id="bill-input"
+            class="bill-input"
+            name="bill"
+            type="number"
+            placeholder="0"
           />
-        </div>
+
+          <label for="number-of-people" id="people-label" class="people-label">
+            Number of People
+            <span
+              id="people-error-msg"
+              class="people-error-msg"
+              aria-live="assertive"
+            ></span>
+          </label>
+          <input
+            id="number-of-people"
+            class="people-input"
+            name="people"
+            type="number"
+            placeholder="0"
+          />
+        </fieldset>
+        <fieldset>
+          <legend>Select Tip %</legend>
+          <div class="tip-percent-container">
+            <button
+              class="tip-btn"
+              data-percent="0.10"
+              aria-label="10 percent tip"
+            >
+              10%
+            </button>
+            <button
+              class="tip-btn"
+              data-percent="0.15"
+              aria-label="15 percent tip"
+            >
+              15%
+            </button>
+            <button
+              class="tip-btn"
+              data-percent="0.18"
+              aria-label="18 percent tip"
+            >
+              18%
+            </button>
+            <button
+              class="tip-btn"
+              data-percent="0.20"
+              aria-label="20 percent tip"
+            >
+              20%
+            </button>
+            <button
+              class="tip-btn"
+              data-percent="0.25"
+              aria-label="25 percent tip"
+            >
+              25%
+            </button>
+            <input
+              id="custom-tip-btn"
+              class="custom-tip-btn"
+              name="custom"
+              placeholder="Custom %"
+              aria-label="Custom tip percentage"
+            />
+          </div>
+        </fieldset>
       </section>
       <section class="tip-total-container">
         <div class="tip-background">

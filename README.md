@@ -59,7 +59,101 @@ Users should be able to:
   - I modified the fixed tip amounts to reflect percentages that users might more commonly choose. For example, the original design included a 50% tip, which I adjusted to a more typical range.
 
 - **Result Labels**
+
   - I updated the result labels to provide clearer information. The new labels show Tip Amount/person, Total Tip, and Total Bill (instead of Tip Amount/person and Total/person), which I found to be more intuitive for users.
+
+**Enhancing Accessibility:**
+
+I added the `fieldset` element and used the `aria-labelledby` attribute to group related form elements together for improved accessibility. This ensures that screen readers can properly associate the "Bill" and "Number of People" labels with the corresponding inputs, making it easier for visually impaired users to navigate the form.
+
+```html
+<fieldset aria-labelledby="bill-label people-label">
+  <label for="bill-input" id="bill-label" class="bill-label"
+    >Bill
+    <span
+      class="bill-error-msg"
+      id="bill-error-msg"
+      aria-live="assertive"
+    ></span
+  ></label>
+  <input
+    id="bill-input"
+    class="bill-input"
+    name="bill"
+    type="number"
+    placeholder="0"
+  />
+
+  <label for="number-of-people" id="people-label" class="people-label">
+    Number of People
+    <span
+      id="people-error-msg"
+      class="people-error-msg"
+      aria-live="assertive"
+    ></span>
+  </label>
+  <input
+    id="number-of-people"
+    class="people-input"
+    name="people"
+    type="number"
+    placeholder="0"
+  />
+</fieldset>
+```
+
+In connection with the `fieldset` elements, I also used a `legend` tag to provide a clear label for the group of tip percentage buttons. This allows screen readers to understand the context of the buttons, improving accessibility for all users.
+
+```html
+<fieldset>
+  <legend>Select Tip %</legend>
+  <div class="tip-percent-container">
+    <button class="tip-btn" data-percent="0.10" aria-label="10 percent tip">
+      10%
+    </button>
+  </div>
+</fieldset>
+```
+
+Making sure to add aria-labels (e.g., `aria-label="10 percent tip"`) to my tip buttons for greater accessibility:
+
+```html
+<div class="tip-percent-container">
+  <button class="tip-btn" data-percent="0.10" aria-label="10 percent tip">
+    10%
+  </button>
+</div>
+```
+
+Using aria-live="assertive" for accessibility to ensure that error messages are immediately announced by screen readers, helping users with visual impairments receive critical information without delay.
+
+```html
+<label for="bill-input" class="bill-label"
+  >Bill
+  <span class="bill-error-msg" id="bill-error-msg" aria-live="assertive"></span
+></label>
+```
+
+Making sure that there is enough contrast for text with `filter: contrast(120%)`:
+
+```css
+.reset-btn {
+  width: 100%;
+  text-transform: uppercase;
+  background: var(--strong-cyan);
+  font-weight: 700;
+  color: var(--very-dark-cyan);
+  /*Ensure enough contrast */
+  filter: contrast(120%);
+  border-radius: 5px;
+  padding: 0.5em 0;
+  border: none;
+  margin-top: 0.5em;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+```
 
 **Other Notes:**
 
@@ -138,27 +232,6 @@ Remember to include Number() in front of tip in the second line because `tip.toF
   const total = (billAmount + Number(tip)).toFixed(2);
   const tipPerPersonAmount = (tip / people).toFixed(2);
 };
-```
-
-Making sure that there is enough contrast for text with `filter: contrast(120%)`:
-
-```css
-.reset-btn {
-  width: 100%;
-  text-transform: uppercase;
-  background: var(--strong-cyan);
-  font-weight: 700;
-  color: var(--very-dark-cyan);
-  /*Ensure enough contrast */
-  filter: contrast(120%);
-  border-radius: 5px;
-  padding: 0.5em 0;
-  border: none;
-  margin-top: 0.5em;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
-}
 ```
 
 ### Continued development
