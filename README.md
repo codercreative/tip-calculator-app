@@ -49,17 +49,17 @@ Users should be able to:
 
 - **Input Order**
 
-  - The input fields have been reordered for a more intuitive user flow:
-    1. Enter the bill amount
-    2. Enter the number of people
-    3. Select the tip percentages
+  - I adjusted the input field order in order to create a smoother user experience. Now, users are guided through this sequence:
+    - Enter the bill amount
+    - Enter the number of people
+    - Select the tip percentages
 
 - **Tip Percentages**
 
-  - The fixed tip amounts have been updated to more realistic values (The original design included a tip amount of 50%)
+  - I modified the fixed tip amounts to reflect percentages that users might more commonly choose. For example, the original design included a 50% tip, which I adjusted to a more typical range.
 
 - **Result Labels**
-  - I also changed the results to Tip Amount/person, Total Tip, and Total Bill (instead of Tip Amount/person, and Total/person) as that made more sense to me.
+  - I updated the result labels to provide clearer information. The new labels show Tip Amount/person, Total Tip, and Total Bill (instead of Tip Amount/person and Total/person), which I found to be more intuitive for users.
 
 **Other Notes:**
 
