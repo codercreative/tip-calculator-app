@@ -23,9 +23,16 @@ function handleFocus() {
   this.style.color = "var(--very-dark-cyan)";
   this.style.fontWeight = "700";
   this.style.padding = "0";
-  // this.outline = "none";
-  billErrorMsg.textContent = "";
-  peopleErrorMsg.textContent = "";
+
+  if (this === billInput) {
+    billErrorMsg.textContent = "";
+    billInput.style.border = "2px solid var(--strong-cyan)";
+  }
+
+  if (this === numberOfPeople) {
+    peopleErrorMsg.textContent = "";
+    numberOfPeople.style.border = "2px solid var(--strong-cyan)";
+  }
 }
 
 //Blur state -- handle styling when user clicks outside the input fields
@@ -52,7 +59,7 @@ function handleTip(e) {
     billInput.style.border = "2px solid var(--error-red)";
   } else {
     billErrorMsg.textContent = "";
-    billInput.style.border = "none";
+    billInput.style.border = "";
   }
 
   if (!people) {

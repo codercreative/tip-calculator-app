@@ -165,6 +165,7 @@ Making sure that there is enough contrast for text with `filter: contrast(120%)`
 
 - Refactor the code to make it more DRY.
 - Create an error message if the custom tip is too high.
+- It would also be fun to make some motion design on the custom tip input field for greater user experience
 
 ## Author
 
